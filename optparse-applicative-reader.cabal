@@ -1,0 +1,51 @@
+name:                optparse-applicative-reader
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/gxmas/optparse-applicative-reader#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Geoffrey Noel
+maintainer:          noel.geoff@gmail.com
+copyright:           2017
+category:            Misc
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Options.Applicative.Builder.Reader
+                     , Options.Applicative.Builder.Reader.Internal
+  build-depends:       base >= 4.7 && < 5
+                     , attoparsec
+                     , bytestring
+                     , optparse-applicative
+  default-language:    Haskell2010
+
+executable optparse-applicative-reader-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base >= 4.7 && < 5
+                     , optparse-applicative
+                     , optparse-applicative-reader
+  default-language:    Haskell2010
+
+test-suite optparse-applicative-reader-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , attoparsec
+                     , hspec
+                     , optparse-applicative
+                     , optparse-applicative-reader
+  other-modules:       Options.Applicative.Builder.ReaderSpec
+                     , Options.Applicative.Builder.Reader.InternalSpec
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/gxmas/optparse-applicative-reader
